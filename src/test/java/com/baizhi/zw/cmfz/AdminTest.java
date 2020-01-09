@@ -146,7 +146,7 @@ public class AdminTest {
     @Test
     public void goesay() {
         GoEasy goEasy = new GoEasy( "http://rest-hangzhou.goeasy.io", "BC-47e47f95448848df966df1209ab41af7");
-                goEasy.publish("cmfz", "你可去你妈的把！！");
+                goEasy.publish("cmfz", "测试发送数据！！");
     }
 }
 
