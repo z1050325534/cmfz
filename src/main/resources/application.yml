@@ -23,10 +23,13 @@ spring:
     view:
       prefix: /
       suffix: .jsp
+  redis:
+    host: 192.168.188.105
+    port: 7000
 # mybatis
 mybatis:
   type-aliases-package: com.baizhi.zw.entity
   mapper-locations: classpath:com/baizhi/mapper/*.xml
 logging:
   level:
-    com.baizhi.dao: debug
+    com.baizhi.zw.dao: debug

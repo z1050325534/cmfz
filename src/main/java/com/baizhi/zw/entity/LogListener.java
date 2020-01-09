@@ -15,7 +15,7 @@ public class LogListener extends AnalysisEventListener<Log> {
     @Override
     public void invoke(Log log, AnalysisContext analysisContext) {
         ApplicationContentUtils applicationContentUtils = new ApplicationContentUtils();
-        LogDao logDao = (LogDao) applicationContentUtils.getBean(LogDao.class);
+        LogDao logDao = (LogDao) applicationContentUtils.getBeanByClass(LogDao.class);
         logDao.insert(log);
         list.add(log);
     }
