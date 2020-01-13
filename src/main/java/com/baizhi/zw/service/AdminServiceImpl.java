@@ -2,6 +2,12 @@ package com.baizhi.zw.service;
 
 import com.baizhi.zw.dao.AdminDao;
 import com.baizhi.zw.entity.Admin;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.config.IniSecurityManagerFactory;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -18,16 +24,17 @@ public class AdminServiceImpl implements AdminService {
     @Transactional(propagation = Propagation.NOT_SUPPORTED,readOnly = true)
     //后台验证用户名密码
     public boolean loginAdmin(Admin admin) {
-        Admin admin1 = adminDao.selectOne(admin);
-        if(admin1!=null){
-                if(admin1.getPassword().equals(admin.getPassword())){
-                    ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-                    //验证成功 将用户名存到session
-                    requestAttributes.getRequest().getSession().setAttribute("username",admin1.getUsername());
-                    return true;
-                }
+        IniSecurityManagerFactory iniSecurityManagerFactory = new IniSecurityManagerFactory("classpath:shiro.ini");
+        SecurityManager securityManager = iniSecurityManagerFactory.createInstance();
+        SecurityUtils.setSecurityManager(securityManager);
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(admin.getUsername(), admin.getPassword());
+        try {
+            subject.login(usernamePasswordToken);
+            return subject.isAuthenticated();
+        }catch (IncorrectCredentialsException e){
+            e.printStackTrace();
+            return false;
         }
-        //验证失败
-        return false;
     }
 }

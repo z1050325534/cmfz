@@ -1,7 +1,6 @@
 package com.baizhi.zw.service;
 
 import com.baizhi.zw.entity.User;
-import org.elasticsearch.common.MacAddressProvider;
 
 import java.util.Map;
 

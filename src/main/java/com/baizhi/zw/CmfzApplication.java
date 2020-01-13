@@ -7,9 +7,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @SpringBootApplication
 @MapperScan("com.baizhi.zw.dao")
 public class CmfzApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(CmfzApplication.class, args);
 	}
-
 }

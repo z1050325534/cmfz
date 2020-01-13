@@ -8,8 +8,6 @@ import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -17,6 +15,15 @@ import java.util.Map;
 import java.util.Random;
 @RestController
 public class PhoneUtil {
+    //生成随机的盐
+    public static  String  getSalt(int n){
+        char[] code =  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            sb.append(code[new Random().nextInt(code.length)]);
+        }
+        return sb.toString();
+    }
     //生成验证码
     public static String getCode(int n) {
         char[] code = "0123456789".toCharArray();

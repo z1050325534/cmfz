@@ -2,7 +2,15 @@ package com.baizhi.zw.cmfz;
 
 import com.baizhi.zw.dao.ArticleDao;
 import com.baizhi.zw.entity.Article;
+import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.sun.org.omg.CORBA.InitializerSeqHelper;
 import org.apache.poi.hssf.usermodel.*;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.config.IniSecurityManagerFactory;
+import org.apache.shiro.crypto.hash.Md5Hash;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.subject.Subject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +64,25 @@ public class PoiTest {
             row1.createCell(0).setCellValue(article.getId());
 
         }
+    }
+
+    @Test
+    public void testShiro() {
+        IniSecurityManagerFactory iniSecurityManagerFactory = new IniSecurityManagerFactory("classpath:shiro.ini");
+        SecurityManager securityManager = iniSecurityManagerFactory.createInstance();
+        SecurityUtils.setSecurityManager(securityManager);
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken("admin", "admin");
+        subject.login(usernamePasswordToken);
+        if(subject.isAuthenticated()){
+            System.out.println("hello World");
+        }
+    }
+
+    @Test
+    public void testMD5() {
+        String salt = "abcd";//9898247bfac3a524680145b3b5e203d3
+        Md5Hash md5Hash = new Md5Hash("zw",salt,1024);
+        System.out.println(md5Hash);
     }
 }

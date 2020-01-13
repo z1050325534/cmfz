@@ -85,6 +85,7 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.4</version>
 		</dependency>
+		<!-- 计算音频时长jar包 -->
 		<dependency>
 			<groupId>org</groupId>
 			<artifactId>jaudiotagger</artifactId>
@@ -118,7 +119,7 @@
 			<version>2.1.3</version>
 		</dependency>
 		<!-- easyPoi -->
-		<dependency>
+		<!--<dependency>
 			<groupId>cn.afterturn</groupId>
 			<artifactId>easypoi-base</artifactId>
 			<version>3.2.0</version>
@@ -132,9 +133,7 @@
 			<groupId>cn.afterturn</groupId>
 			<artifactId>easypoi-annotation</artifactId>
 			<version>3.2.0</version>
-		</dependency>
-		<!-- goeasy -->
-
+		</dependency>-->
 		<!-- Redis -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -186,7 +185,7 @@
 		<dependency>
 			<groupId>com.aliyun</groupId>
 			<artifactId>aliyun-java-sdk-core</artifactId>
-			<version>4.0.3</version>
+			<version>4.0.6</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
