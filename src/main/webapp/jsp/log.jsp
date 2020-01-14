@@ -68,7 +68,7 @@
 </script>
 <div class="page-header">
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">用户日志管理</a></li>
+        <li role="presentation" class="active"><a href="javascript:void(0)" aria-controls="home" role="tab" data-toggle="tab">用户日志管理</a></li>
         <li><a href="javascript:void(0)" onclick="moveLog()">导出日志信息</a></li>
         <li><a href="javascript:void(0)" onclick="showArticle()">导入日志信息</a></li>
         <li><a>Excel模板下载</a></li>

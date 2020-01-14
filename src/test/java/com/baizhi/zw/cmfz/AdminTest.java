@@ -39,7 +39,7 @@ public class AdminTest {
 
     @Test
     public void queryAll() {
-        Admin admins = adminDao.selectOneByExample(new Admin(null,"admin","admin",null));
+        Admin admins = adminDao.selectOneByExample(new Admin(null,"admin","admin",null,null));
         System.out.println(admins);
     }
 

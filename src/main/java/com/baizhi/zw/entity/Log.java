@@ -6,11 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Log {
+public class Log implements Serializable {
   @Id
   @ExcelProperty(index = 0)
   private String id;
@@ -23,5 +24,4 @@ public class Log {
   private Date time;
   @ExcelProperty(index = 4)
   private String flag;
-
 }

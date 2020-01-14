@@ -4,18 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.List;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class Admin implements Serializable {
-    @Id
+public class Role implements Serializable {
     private String id;
-    private String username;
-    private String password;
-    private String salt;
-    private List<Role> roles;
+    private String roleName;
+    private List<Resource> resources;
 }

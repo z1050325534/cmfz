@@ -1,5 +1,6 @@
 <%@page isELIgnored="false" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <html lang="en">
 <head>
@@ -52,8 +53,8 @@
         <div>
             <!--向右对齐-->
             <ul class="nav navbar-nav navbar-right">
-                <li><a>来了${sessionScope.admin.username}老弟</a></li>
-                <li><a>退出登陆</a></li>
+                <li><a>来了<shiro:principal></shiro:principal>老弟</a></li>
+                <li><a href="${path}/admin/logout">退出登陆</a></li>
             </ul>
         </div>
     </div>
@@ -164,7 +165,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-success">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion"
@@ -178,6 +179,25 @@
                             <ul class="nav">
                                 <li>
                                     <a href="javascript:$('#centerLay').load('${path}/jsp/goeasy.jsp')">进入聊天室</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseSeven">
+                                管理员模块
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSeven" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="nav">
+                                <li>
+                                    <a href="javascript:$('#centerLay').load('${path}/jsp/admin.jsp')">管理员</a>
                                 </li>
                             </ul>
                         </div>

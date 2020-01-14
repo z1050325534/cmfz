@@ -165,7 +165,7 @@
 </head>
 <div class="page-header">
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">文章管理</a></li>
+        <li role="presentation" class="active"><a href="javascript:void(0)" aria-controls="home" role="tab" data-toggle="tab">文章管理</a></li>
         <li><a class="btn btn-default" onclick="showArticle()">添加文章</a></li>
     </ul>
     <div class="panel">

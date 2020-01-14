@@ -3,6 +3,8 @@ package com.baizhi.zw.controller;
 import com.baizhi.zw.entity.Admin;
 import com.baizhi.zw.service.AdminService;
 import com.baizhi.zw.service.LogService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +20,7 @@ public class AdminController {
     AdminService adminService;
     @Autowired
     LogService logService;
-    @RequestMapping("/login")
+    @RequestMapping("login")
     //后台登陆
     public Map login(Admin admin, String code, HttpSession session){
         HashMap hashMap = new HashMap();
@@ -41,8 +43,18 @@ public class AdminController {
         hashMap.put("msg","验证码错误");
         return hashMap;
     }
+    @RequestMapping("logout")
+    public void logout(){
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+    }
+    //后台查询管理员并分页
+    @RequestMapping("queryAdminByPage")
+    public Map queryAdminByPage(Integer page,Integer rows){
+        return adminService.queryByPage(page,rows);
+    }
     //后台查询日志并分页
-    @RequestMapping("/queryLogByPage")
+    @RequestMapping("queryLogByPage")
     public Map queryLogByPage(Integer page,Integer rows){
         return logService.queryByPage(page,rows);
     }
