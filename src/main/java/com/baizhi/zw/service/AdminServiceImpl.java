@@ -2,20 +2,14 @@ package com.baizhi.zw.service;
 
 import com.baizhi.zw.dao.AdminDao;
 import com.baizhi.zw.entity.Admin;
-import com.baizhi.zw.realm.MyRealm;
-import org.apache.ibatis.session.RowBounds;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.config.IniSecurityManagerFactory;
-import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -77,4 +77,11 @@ public class GuruController {
         hashMap.put("status",200);
         return hashMap;
     }
+    @RequestMapping("selectGuruById")
+    public Map selectGuruById(String id){
+        HashMap hashMap = new HashMap();
+        Guru guru = guruService.queryOne(id);
+        hashMap.put("guruName",guru.getName());
+        return hashMap;
+    }
 }

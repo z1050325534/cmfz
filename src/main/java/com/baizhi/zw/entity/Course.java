@@ -7,13 +7,14 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Course {
+public class Course implements Serializable {
   @Id
   private String id;
   private String title;

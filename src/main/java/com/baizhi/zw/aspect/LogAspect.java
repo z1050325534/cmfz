@@ -1,7 +1,6 @@
 package com.baizhi.zw.aspect;
 
 import com.baizhi.zw.annotation.LogAnnotation;
-import com.baizhi.zw.entity.Admin;
 import com.baizhi.zw.entity.Log;
 import com.baizhi.zw.service.LogService;
 import org.aspectj.lang.ProceedingJoinPoint;

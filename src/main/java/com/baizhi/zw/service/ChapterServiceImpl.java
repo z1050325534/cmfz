@@ -1,12 +1,10 @@
 package com.baizhi.zw.service;
 
-import com.baizhi.zw.annotation.LogAnnotation;
 import com.baizhi.zw.dao.ChapterDao;
+import com.baizhi.zw.annotation.LogAnnotation;
 import com.baizhi.zw.entity.Album;
 import com.baizhi.zw.entity.Chapter;
-import org.apache.commons.io.FileUtils;
 import org.apache.ibatis.session.RowBounds;
-import org.aspectj.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -16,7 +14,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import tk.mybatis.mapper.entity.Example;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
 @Service

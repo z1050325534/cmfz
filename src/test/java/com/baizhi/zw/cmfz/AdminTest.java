@@ -2,10 +2,7 @@ package com.baizhi.zw.cmfz;
 
 import com.baizhi.zw.dao.*;
 import com.baizhi.zw.entity.*;
-import com.baizhi.zw.service.BannerService;
-import com.baizhi.zw.service.BannerServiceImpl;
 import io.goeasy.GoEasy;
-import lombok.AllArgsConstructor;
 import org.apache.ibatis.session.RowBounds;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -147,6 +143,11 @@ public class AdminTest {
     public void goesay() {
         GoEasy goEasy = new GoEasy( "http://rest-hangzhou.goeasy.io", "BC-47e47f95448848df966df1209ab41af7");
                 goEasy.publish("cmfz", "测试发送数据！！");
+    }
+    @Test
+    public void testQueryUserByTime(){
+        Integer integer = userDao.selectUserByTime("0", 7);
+        System.out.println(integer);
     }
 }
 

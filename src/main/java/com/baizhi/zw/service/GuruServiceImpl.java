@@ -1,8 +1,9 @@
 package com.baizhi.zw.service;
 
-import com.baizhi.zw.annotation.LogAnnotation;
+import com.baizhi.zw.dao.ArticleDao;
 import com.baizhi.zw.dao.GuruDao;
-import com.baizhi.zw.entity.Banner;
+import com.baizhi.zw.annotation.LogAnnotation;
+import com.baizhi.zw.entity.Article;
 import com.baizhi.zw.entity.Guru;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,15 +14,15 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.io.File;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @Transactional
 public class GuruServiceImpl implements GuruService {
     @Autowired
     GuruDao guruDao;
+    @Autowired
+    ArticleDao articleDao;
     @Override
     @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
     @LogAnnotation(value = "查询所有上师信息")
@@ -55,7 +56,8 @@ public class GuruServiceImpl implements GuruService {
 
     @Override
     public Guru queryOne(String id) {
-        return guruDao.selectByPrimaryKey(id);
+        Article article = articleDao.selectByPrimaryKey(id);
+        return guruDao.selectByPrimaryKey(article.getGuruId());
     }
 
     @Override

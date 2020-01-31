@@ -2,16 +2,15 @@ package com.baizhi.zw.realm;
 
 import com.baizhi.zw.dao.AdminDao;
 import com.baizhi.zw.entity.Admin;
+import com.baizhi.zw.util.ApplicationContentUtils;
 import com.baizhi.zw.entity.Resource;
 import com.baizhi.zw.entity.Role;
-import com.baizhi.zw.util.ApplicationContentUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAccount;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.realm.AuthenticatingRealm;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;

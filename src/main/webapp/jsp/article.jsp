@@ -9,7 +9,9 @@
                 datatype: "json",
                 colNames: ['id', '标题', '封面', '内容', '创建时间', '出版时间', '状态', '所属上师', '操作'],
                 colModel: [
-                    {name: 'id', align: "center", hidden: true},
+                    {name: 'id', align: "center", hidden: true,formatter: function (data, options) {
+                            showGuru(data,options.rowId);
+                        }},
                     {name: 'title', align: "center"},
                     {
                         name: 'image', formatter: function (cellvalue, options, rowObject) {
@@ -27,8 +29,7 @@
                         }
                     },
                     {
-                        name: 'guruId',
-                        align: "center",
+                        name: 'guruId', align: "center"
                     },
                     {
                         name: '', formatter: function (cellvalue, options, rowObject) {
@@ -39,7 +40,7 @@
                     }
                 ],
                 rowNum: 5,
-                rowList: [5,10,15,20],
+                rowList: [5, 10, 15, 20],
                 pager: '#articlePage',
                 autowidth: true,
                 height: "45%",
@@ -65,7 +66,20 @@
             $("#guru_list").html(option);
         }
     });
-
+    //动态展示上师姓名
+    function showGuru(guruId,rowId) {
+        $.ajax({
+            url: "${path}/guru/selectGuruById",
+            datatype: "json",
+            type: "post",
+            data: {
+                "id": guruId,
+            },
+            success: function (data) {
+                $("#articleTable").jqGrid('setCell',rowId,'guruId',data.guruName)
+            }
+        })
+    }
     // 添加文章模态框展示
     function showArticle() {
         $("#kindForm")[0].reset();
@@ -86,6 +100,7 @@
         });
         $("#myModal").modal("show");
     }
+
     //提交按钮事件
     function sub() {
         $.ajaxFileUpload({
@@ -106,6 +121,7 @@
             }
         });
     }
+
     //修改按钮事件
     function update(id) {
         $("#kindForm")[0].reset();
@@ -147,6 +163,7 @@
         //给富文本编辑器添加内容
         KindEditor.html("#editor_id", row.content);
     }
+
     //删除按钮事件
     function del(id) {
         var data = $("#articleTable").jqGrid("getRowData", id);
@@ -165,7 +182,8 @@
 </head>
 <div class="page-header">
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="javascript:void(0)" aria-controls="home" role="tab" data-toggle="tab">文章管理</a></li>
+        <li role="presentation" class="active"><a href="javascript:void(0)" aria-controls="home" role="tab"
+                                                  data-toggle="tab">文章管理</a></li>
         <li><a class="btn btn-default" onclick="showArticle()">添加文章</a></li>
     </ul>
     <div class="panel">

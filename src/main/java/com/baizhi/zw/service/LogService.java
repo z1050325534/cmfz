@@ -3,7 +3,6 @@ package com.baizhi.zw.service;
 import com.baizhi.zw.entity.Log;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Map;
 

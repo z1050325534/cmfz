@@ -6,12 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class User {
+public class User implements Serializable {
 @Id
   private String id;
   private String phone;

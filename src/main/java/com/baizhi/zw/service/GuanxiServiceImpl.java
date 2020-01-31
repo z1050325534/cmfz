@@ -5,7 +5,6 @@ import com.baizhi.zw.dao.GuanXiDao;
 import com.baizhi.zw.dao.GuruDao;
 import com.baizhi.zw.entity.Article;
 import com.baizhi.zw.entity.Guanxi;
-import com.baizhi.zw.entity.Guru;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
